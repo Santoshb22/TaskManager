@@ -17,12 +17,10 @@ class TaskService {
 }
 
  updateTask = async (taskId, taskData) => {
-    const task = await Task.findOne({_id: taskId});
-    if(!task) {
-    throw new Error("Task not found");
-    }
-
     const taskUpdated = await Task.findByIdAndUpdate(taskId, taskData, {new: true});
+    if(!taskUpdated) {
+      throw new Error("Task not found");
+    }
     return taskUpdated;
 }
 

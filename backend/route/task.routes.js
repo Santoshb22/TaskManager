@@ -12,7 +12,7 @@ router.get("/", getTask);
 
 router.post("/", validate(taskValidation.createTaskValidation), upload.single("pdf"), createTask);
 
-router.put("/:id", validate(taskValidation.createTaskValidation), updateTask);
+router.patch("/:id", validate(taskValidation.updateTaskValidation), updateTask);
 
 router.delete("/:id", deleteTask);
 

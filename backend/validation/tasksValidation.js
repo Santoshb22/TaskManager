@@ -11,6 +11,15 @@ const createTaskValidation = {
     })
 }
 
+const updateTaskValidation = {
+    body: Joi.object({
+        title: Joi.string().optional(),
+        description: Joi.string().optional(),
+        deadline: Joi.date().optional(),
+        status: Joi.string().optional(),
+      })
+}
 module.exports = {
-    createTaskValidation
+    createTaskValidation,
+    updateTaskValidation
 }

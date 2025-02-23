@@ -21,9 +21,8 @@ const getTask = async (req, res) => {
 
 const updateTask = async (req, res) => {
     const id = req.params.id;
-    const task = req.body;
     try {
-        const taskUpdated = await TaskServiceInstance.updateTask(id, task);
+        const taskUpdated = await TaskServiceInstance.updateTask(id, req.body);
 
         if(!taskUpdated){
             return res.status(404).json({ message: "Task not found" });
