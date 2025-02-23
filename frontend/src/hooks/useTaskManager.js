@@ -27,19 +27,22 @@ export const useTaskManager = () => {
   };
 
   const handleSave = async (refreshTasks) => {
-    const formData = new FormData();
-    formData.append("title", taskData.title);
-    formData.append("description", taskData.description);
-    formData.append("deadline", taskData.deadline);
-    formData.append("status", taskData.status);
-    if (file) formData.append("pdf", file);
+    // const formData = new FormData();
+    // formData.append("title", taskData.title);
+    // formData.append("description", taskData.description);
+    // formData.append("deadline", taskData.deadline);
+    // formData.append("status", taskData.status);
+    // if (file) formData.append("pdf", file);
 
-    // const payload = {
-    //   title: taskData.title,
-    //   description: taskData.description,
-    //   deadline: taskData.deadline,
-    //   status: taskData.status,
-    // }
+    const payload = {
+      title: taskData.title,
+      description: taskData.description,
+      deadline: taskData.deadline,
+      status: taskData.status,
+    }
+    if(file){
+      payload.file = file
+    }
     try {
       if (isEditing) {
         await updateTask(taskData._id, {
@@ -48,8 +51,8 @@ export const useTaskManager = () => {
           deadline: taskData.deadline,
         });
       } else {
-        await createTask(formData);
-        // await createTask(payload);
+        // await createTask(formData);
+        await createTask(payload);
       }
       await refreshTasks();
       handleClose();
