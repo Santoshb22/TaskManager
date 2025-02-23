@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
-require('dotenv').config();
 const app = require("./app");
+const config = require("./config/config.js");
 
 const server = app;
 
-const port = process.env.PORT || 3000;
+const port = config.port;
 
 server.listen(port, () => {
     console.log(`server is listenening to the port: ${port}`)
 })
 
-mongoose.connect('mongodb://127.0.0.1:27017/myapp')
+mongoose.connect(config.mongoDB_URL)
 .then(() => console.log("Databse Connected"));

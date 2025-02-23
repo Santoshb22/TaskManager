@@ -22,5 +22,5 @@ export const deleteTask = async (taskId) => {
 
 export const markTaskAsDone = async (taskId) => {
     await axios.patch(`${apiURL}/${taskId}`, { status: "DONE" });
-  };
+};
   
