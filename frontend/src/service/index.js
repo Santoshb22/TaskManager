@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const apiURL = "http://localhost:8082/tasks";
+const backendEndpoint = import.meta.env.API_URL;
+const apiURL = `${backendEndpoint}/tasks`;
 
 export const fetchTasks = async () => {
     const res = await axios.get(apiURL);
