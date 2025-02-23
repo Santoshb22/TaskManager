@@ -3,7 +3,6 @@ import axios from "axios";
 const backendEndpoint = import.meta.env.VITE_API_URL;
 const apiURL = `${backendEndpoint}/tasks`;
 
-console.log(apiURL); //got undefiner 
 export const fetchTasks = async () => {
     const res = await axios.get(apiURL);
     return res.data;
